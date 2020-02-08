@@ -910,5 +910,5 @@ fi
  # Clearing all logs from installation
  rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
 
-rm -f DebianVPS-Installer*
+rm -f debian9*
 exit 1
