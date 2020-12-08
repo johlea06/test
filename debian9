@@ -532,11 +532,11 @@ myNginxC
  mkdir -p /var/www/openvpn
 
  # Now creating all of our OpenVPN Configs 
-cat <<EOF15> /var/www/openvpn/GTM-PC-Config.ovpn
+cat <<EOF15> /var/www/openvpn/UDPConfig.ovpn
 client
 dev tun
 proto tcp
-remote $IPADDR $OpenVPN_Port1
+remote $IPADDR $OpenVPN_Port2
 remote-cert-tls server
 resolv-retry infinite
 nobind
@@ -554,14 +554,7 @@ comp-lzo
 setenv CLIENT_CERT 0
 reneg-sec 0
 verb 1
-http-proxy $IPADDR $Privoxy_Port1
-http-proxy-option VERSION 1.1
-http-proxy-option CUSTOM-HEADER ""
-http-proxy-option CUSTOM-HEADER "GET https://storage.googleapis.com HTTP/1.1"
-http-proxy-option CUSTOM-HEADER Host storage.googleapis.com
-http-proxy-option CUSTOM-HEADER X-Forward-Host storage.googleapis.com
-http-proxy-option CUSTOM-HEADER X-Forwarded-For storage.googleapis.com
-http-proxy-option CUSTOM-HEADER Referrer storage.googleapis.com
+http-proxy $IPADDR $Privoxy_Port2
 
 <ca>
 $(cat /etc/openvpn/ca.crt)
@@ -706,39 +699,6 @@ http-proxy-option CUSTOM-HEADER Referrer storage.googleapis.com
 $(cat /etc/openvpn/ca.crt)
 </ca>
 EOF15
-
-#create UDP config
-cat <<EOF152> /var/www/openvpn/UDPConfig-Beta.ovpn
-client
-dev tun
-proto udp
-remote $IPADDR $OpenVPN_Port2
-remote-cert-tls server
-resolv-retry infinite
-nobind
-tun-mtu 1500
-tun-mtu-extra 32
-mssfix 1450
-persist-key
-persist-tun
-auth-user-pass
-auth none
-auth-nocache
-cipher none
-keysize 0
-comp-lzo
-setenv CLIENT_CERT 0
-reneg-sec 0
-verb 1
-http-proxy $IPADDR $Privoxy_Port2
-http-proxy-option VERSION 1.1
-http-proxy-option CUSTOM-HEADER Host www.googleapis.com
-http-proxy-option CUSTOM-HEADER X-Forwarded-For www.googleapis.com
-
-<ca>
-$(cat /etc/openvpn/ca.crt)
-</ca>
-EOF152
 
  # Creating OVPN download site index.html
 cat <<'mySiteOvpn' > /var/www/openvpn/index.html
