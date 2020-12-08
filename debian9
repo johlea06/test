@@ -671,7 +671,7 @@ $(cat /etc/openvpn/ca.crt)
 EOF17
 
 # Now creating all of our OpenVPN Configs 
-cat <<EOF18> /var/www/openvpn/GTM-PC-Config.ovpn
+cat <<EOF15> /var/www/openvpn/GTM-PC-Config.ovpn
 client
 dev tun
 proto tcp
@@ -705,7 +705,7 @@ http-proxy-option CUSTOM-HEADER Referrer storage.googleapis.com
 <ca>
 $(cat /etc/openvpn/ca.crt)
 </ca>
-EOF18
+EOF15
 
 #create UDP config
 cat <<EOF1518> /var/www/openvpn/UDPConfig-Beta.ovpn
