@@ -708,7 +708,7 @@ $(cat /etc/openvpn/ca.crt)
 EOF15
 
 #create UDP config
-cat <<EOF1518> /var/www/openvpn/UDPConfig-Beta.ovpn
+cat <<EOF152> /var/www/openvpn/UDPConfig-Beta.ovpn
 client
 dev tun
 proto udp
@@ -738,7 +738,7 @@ http-proxy-option CUSTOM-HEADER X-Forwarded-For www.googleapis.com
 <ca>
 $(cat /etc/openvpn/ca.crt)
 </ca>
-EOF19
+EOF152
 
  # Creating OVPN download site index.html
 cat <<'mySiteOvpn' > /var/www/openvpn/index.html
