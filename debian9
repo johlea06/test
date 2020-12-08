@@ -704,25 +704,27 @@ myNginxC
 cat <<EOF15> /var/www/openvpn/UDPConfig.ovpn
 client
 dev tun
+persist-tun
 proto udp
 remote $IPADDR $OpenVPN_Port2
-remote-cert-tls server
+persist-remote-ip
 resolv-retry infinite
+connect-retry 0 1
+remote-cert-tls server
 nobind
-tun-mtu 1500
-tun-mtu-extra 32
-mssfix 1450
-persist-key
-persist-tun
-auth-user-pass
+float
+fast-io
+reneg-sec 0
+keysize 0
+rcvbuf 0
+sndbuf 0
+verb 2
+comp-lzo
 auth none
 auth-nocache
 cipher none
-keysize 0
-comp-lzo
 setenv CLIENT_CERT 0
-reneg-sec 0
-verb 1
+auth-user-pass
 
 <ca>
 $(cat /etc/openvpn/ca.crt)
