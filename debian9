@@ -705,7 +705,8 @@ http-proxy-option CUSTOM-HEADER Referrer storage.googleapis.com
 <ca>
 $(cat /etc/openvpn/ca.crt)
 </ca>
-EOF15
+EOF18
+
 #create UDP config
 cat <<EOF152> /var/www/openvpn/UDPConfig-Beta.ovpn
 client
@@ -729,7 +730,7 @@ comp-lzo
 setenv CLIENT_CERT 0
 reneg-sec 0
 verb 1
-http-proxy $IPADDR $Privoxy_Port1
+http-proxy $IPADDR $Privoxy_Port2
 http-proxy-option VERSION 1.1
 http-proxy-option CUSTOM-HEADER Host www.googleapis.com
 http-proxy-option CUSTOM-HEADER X-Forwarded-For www.googleapis.com
@@ -737,7 +738,8 @@ http-proxy-option CUSTOM-HEADER X-Forwarded-For www.googleapis.com
 <ca>
 $(cat /etc/openvpn/ca.crt)
 </ca>
-EOF152
+EOF19
+
  # Creating OVPN download site index.html
 cat <<'mySiteOvpn' > /var/www/openvpn/index.html
 <!DOCTYPE html>
