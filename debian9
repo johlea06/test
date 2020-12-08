@@ -13,7 +13,7 @@
 #############################
 # Variables (Can be changed depends on your preferred values)
 # Script name
-MyScriptName='Bonveio'
+MyScriptName='JohleA'
 
 # OpenSSH Ports
 SSH_Port1='22'
@@ -671,7 +671,7 @@ $(cat /etc/openvpn/ca.crt)
 EOF17
 
 # Now creating all of our OpenVPN Configs 
-cat <<EOF15> /var/www/openvpn/GTM-PC-Config.ovpn
+cat <<EOF18> /var/www/openvpn/GTM-PC-Config.ovpn
 client
 dev tun
 proto tcp
@@ -708,7 +708,7 @@ $(cat /etc/openvpn/ca.crt)
 EOF18
 
 #create UDP config
-cat <<EOF152> /var/www/openvpn/UDPConfig-Beta.ovpn
+cat <<EOF1518> /var/www/openvpn/UDPConfig-Beta.ovpn
 client
 dev tun
 proto udp
